@@ -13,18 +13,25 @@ export const CartProvider = ({ children }) => {
             case '[CART] Remove Product':
                 return state.filter(product => product.id !== action.payload)
             case '[CART] Add Product':
-                return //NO ESTA UN
+                return state.map(product => {
+                    const cant = product.quantity + 1
+                    if (product.id === action.payload) return { ...product, quantity: cant }
+                    return product
+                })
             case '[CART] Remove Product':
-                return //NO ESTA AUN 
-           break;
-                default:
+                return state.map(product => {
+                    const cant = product.quantity - 1
+                    if (product.id === action.payload && product.quantity > 1) return { ...product, quantity: cant }
+                    return product
+                })
+            default:
                 break;
         }
     }
-    const [shoppingList, dispatch] = useReducer(shoppingReducer, initialState)
-   
+    const [shoppingList, dispatch] = useReducer(cartReducer, initialState)
+
     const addProduct = (product) => {
-        product.quantity=1
+        product.quantity = 1
         const action = {
             type: '[CART] Add Product',
             payload: id,
@@ -53,7 +60,7 @@ export const CartProvider = ({ children }) => {
         dispatch(action)
     }
 
-    
+
 
     return (
         <CarritoContext.Provider value={{ shoppingList, addProduct, removeProduct, incrementQuantity, decrementQuantity }}>

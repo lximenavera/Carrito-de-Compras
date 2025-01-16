@@ -2,20 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { ProductContext } from './ProductContext'
 import Swal from 'sweetalert2'
 
-export const ProductProvider = ({children}) => {
-    const [products, setProducts] = useState([])
+export const ProductProvider = ({ children }) => {
+  const [products, setProducts] = useState([])
 
-  const fetchProducts= async ()=>{
+  const fetchProducts = async () => {
     try {
       const response = await fetch('https://api.escuelajs.co/api/v1/products')
-    const data = await response.json()
-    setProducts(data)
+      const data = await response.json()
+      setProducts(data)
     } catch (error) {
       Swal.fire(
         {
-          icon:'error',
-          title:'Error',
-          text:'Hubo un problema al cargar los productos'
+          icon: 'error',
+          title: 'Error',
+          text: 'Hubo un problema al cargar los productos'
         }
       )
       console.error(error)
@@ -25,10 +25,10 @@ export const ProductProvider = ({children}) => {
   useEffect(() => {
     fetchProducts()
   }, [])
-    
+
   return (
-    <ProductContext.Provider value={{products}}>
-        {children}
+    <ProductContext.Provider value={{ products }}>
+      {children}
     </ProductContext.Provider>
   )
 }

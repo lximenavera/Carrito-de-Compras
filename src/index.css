@@ -1,4 +1,4 @@
-.card{
+.card {
     display: flex;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -7,28 +7,34 @@
     flex-direction: row;
     align-items: center;
 }
-.card-img{
+
+.card-img {
     width: 100px;
     height: 100px;
     object-fit: cover;
     border-radius: 5px;
     margin-right: 10px;
 }
-.card-content{
+
+.card-content {
     flex: 1;
 }
-.card-title{
+
+.card-title {
 
     margin: 10px;
 }
-.card-description{
+
+.card-description {
     margin: 0 0 10px 0;
 }
-.card-price{
+
+.card-price {
     margin: 0;
     font-weight: bold;
 }
-.remove-button{
+
+.remove-button {
     background-color: rgb(255, 38, 0);
     color: white;
     border: none;
@@ -37,7 +43,8 @@
     cursor: pointer;
     transition: .5s all ease;
 }
-.add-button{
+
+.add-button {
     background-color: rgb(34, 86, 50);
     color: white;
     border: none;
@@ -46,9 +53,11 @@
     cursor: pointer;
     transition: .5s all ease;
 }
-.remove-button:hover{
+
+.remove-button:hover {
     background-color: red;
 }
-.add-button:hover{
+
+.add-button:hover {
     background-color: green;
 }

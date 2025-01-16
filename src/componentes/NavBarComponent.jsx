@@ -1,9 +1,13 @@
 import { Badge } from '@mui/material'
-import {ShoppingCart} from "@mui/icons-material"
-import React from 'react'
+import { ShoppingCart } from "@mui/icons-material"
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
-
+import { CarritoContext } from '../context/CarritoContext'
+import '../styles/NavBarComponent.css'
 export const NavBarComponent = () => {
+
+  const { shoppingList } = useContext(CarritoContext)
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -14,11 +18,14 @@ export const NavBarComponent = () => {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
             <NavLink to='/' className="nav-link active" aria-current="page">Productos</NavLink>
-            </div>
-          <NavLink to='/carrito'>
-          <Badge badgeContent={4} color="primary">
-            <ShoppingCart/>
-          </Badge>
+          </div>
+          <div className="navbar-nav">
+            <NavLink to='/carrito' className="nav-link" aria-current="page">Carrito</NavLink>
+          </div>
+          <NavLink className='cart-icon' to='/carrito'>
+            <Badge badgeContent={shoppingList.length} color="primary">
+              <ShoppingCart />
+            </Badge>
           </NavLink>
 
         </div>

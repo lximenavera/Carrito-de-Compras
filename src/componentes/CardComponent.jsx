@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { CarritoContext } from '../context/CarritoContext'
 
 
 export const CardComponent = ({ images, title, description, price, handlerAdd, handlerRemove }) => {
+
+    const { shoppingList } = useContext(CarritoContext)
 
     const [added, setAdded] = useState(false)
 
@@ -13,6 +16,16 @@ export const CardComponent = ({ images, title, description, price, handlerAdd, h
         handlerRemove()
         setAdded(false)
     }
+
+    const checkAdded = () => {
+        const boolean = shoppingList.some(product => product.id == id)
+        setAdded(boolean)
+    }
+
+    useEffect(() => {
+        checkAdded()
+    }, [])
+
     return (
         <div className='card'>
             <img src={images} alt={title} className="card-img" />

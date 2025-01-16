@@ -1,4 +1,4 @@
-import { useContext} from 'react'
+import { useContext } from 'react'
 import { CardComponent } from '../componentes/CardComponent'
 import { ProductContext } from '../context/ProductContext'
 import { CarritoContext } from '../context/CarritoContext'
@@ -15,6 +15,7 @@ export const ProductsPages = () => {
       {products.map(product => (
         <CardComponent
           key={product.id}
+          id={product.id}
           images={product.images}
           title={product.title}
           description={product.description}
