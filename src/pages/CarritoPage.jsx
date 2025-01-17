@@ -5,9 +5,11 @@ import Swal from 'sweetalert2'
 export const CarritoPage = () => {
 
   const { shoppingList, removeProduct, incrementQuantity, decrementQuantity } = useContext(CarritoContext)
+ 
   const calculateTotal = () => {
     return shoppingList.reduce((total, product) => total + product.price + product.quantity, 0).toFixed(2)
   }
+
   const handlerPurchase = () => {
     const productPurchased = shoppingList.map(product => `${product.title} x ${product.quantity}`).join('\n')
     Swal.fire({
@@ -34,16 +36,16 @@ export const CarritoPage = () => {
               <td>{product.price}</td>
               <td>
                 <button
-                  className='btn btn-primary'
+                  className='btn btn-outline-primary'
                   onClick={() => decrementQuantity(product.id)}
+                >-</button>
+                <button
+                  className='btn btn-primary'
                 >{product.quantity}</button>
                 <button
                   className='btn btn-outline-primary'
-                >+</button>
-                <button
-                  className='btn btn-outline-primary'
                   onClick={() => incrementQuantity(product.id)}
-                >-</button>
+                >+</button>
               </td>
               <td>{product.quantity}</td>
               <td>
