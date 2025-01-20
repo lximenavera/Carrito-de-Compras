@@ -6,8 +6,8 @@ import { CarritoContext } from '../context/CarritoContext'
 import '../styles/NavBarComponent.css'
 export const NavBarComponent = () => {
 
-  const shoppingList = useContext(CarritoContext)
-  console.log(shoppingList)
+  const {shoppingList} = useContext(CarritoContext)
+ 
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -24,7 +24,7 @@ export const NavBarComponent = () => {
             <NavLink to='/carrito' className="nav-link" aria-current="page">Carrito</NavLink>
           </div>
           <NavLink className='cart-icon' to='/carrito'>
-            <Badge badgeContent={'shoppingList.length'} color="primary">
+            <Badge badgeContent={shoppingList.length} color="primary">
               <ShoppingCart />
             </Badge>
           </NavLink>

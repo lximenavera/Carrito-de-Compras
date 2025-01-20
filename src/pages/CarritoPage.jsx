@@ -67,7 +67,7 @@ export const CarritoPage = () => {
         <button
           className="btn btn-primary"
           type="button"
-          onClick={handlerPurchase()}>Comprar</button>
+          onClick={handlerPurchase}>Comprar</button>
       </div>
     </>
   )
